@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import "../css/Home.css"
 
 function QuranSection() {
@@ -10,9 +10,21 @@ function QuranSection() {
     '"अल्लाह की मस्जिदों को केवल वही लोग आबाद करते हैं, जो अल्लाह और आख़िरत के दिन पर ईमान रखते हैं, नमाज़ क़ायम करते हैं, ज़कात अदा करते हैं और अल्लाह के सिवा किसी से नहीं डरते। यही लोग हैं, जिनसे आशा है कि वे सीधे मार्ग पर होंगे।"'
   ]
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      changeSlide(1)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [currentSlide])
+
   const changeSlide = (direction) => {
-    const newSlide = (currentSlide + direction + translations.length) % translations.length
-    setCurrentSlide(newSlide)
+    setCurrentSlide((prev) => {
+      const newIndex = prev + direction
+      if (newIndex >= translations.length) return 0
+      if (newIndex < 0) return translations.length - 1
+      return newIndex
+    })
   }
 
   return (

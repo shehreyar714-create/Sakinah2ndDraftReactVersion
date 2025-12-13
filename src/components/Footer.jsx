@@ -1,12 +1,26 @@
+import { useEffect } from 'react'
 import "../css/Home.css"
-
 
 function Footer() {
   const handleSubscribe = (e) => {
     e.preventDefault()
     const email = e.target.email.value
-    console.log('Subscribe:', email)
+    alert(`Thank you for subscribing with: ${email}`)
+    e.target.reset()
   }
+
+  useEffect(() => {
+    const contactItems = document.querySelectorAll('.contact-item')
+    
+    contactItems.forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.paddingLeft = '10px'
+      })
+      item.addEventListener('mouseleave', function() {
+        this.style.paddingLeft = '0'
+      })
+    })
+  }, [])
 
   return (
     <footer>

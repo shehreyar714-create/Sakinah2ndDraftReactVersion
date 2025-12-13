@@ -1,6 +1,29 @@
+import { useEffect } from 'react'
 import "../css/Home.css"
 
 function HeroSection() {
+  useEffect(() => {
+    const exploreLink = document.querySelector('.explore-link')
+    
+    const handleClick = (e) => {
+      e.preventDefault()
+      const target = document.querySelector(e.target.getAttribute('href'))
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+
+    if (exploreLink) {
+      exploreLink.addEventListener('click', handleClick)
+    }
+
+    return () => {
+      if (exploreLink) {
+        exploreLink.removeEventListener('click', handleClick)
+      }
+    }
+  }, [])
+
   return (
     <section className="banner-area">
       <div className="animated-backdrop">

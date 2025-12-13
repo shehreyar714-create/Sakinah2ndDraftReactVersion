@@ -1,10 +1,46 @@
+import { useEffect, useRef } from 'react'
 import "../css/Home.css"
 
-
-
 function AboutSection() {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = sectionRef.current
+      if (!section) return
+
+      const scrolled = window.pageYOffset
+      const sectionTop = section.offsetTop
+      const sectionHeight = section.offsetHeight
+
+      if (
+        scrolled > sectionTop - window.innerHeight &&
+        scrolled < sectionTop + sectionHeight
+      ) {
+        const offset = (scrolled - sectionTop) * 0.3
+        section.style.backgroundPosition = `center ${offset}px`
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    const paragraphs = sectionRef.current?.querySelectorAll('.paragraph-block')
+    paragraphs?.forEach((para) => {
+      para.addEventListener('mouseenter', function () {
+        this.style.transform = 'translateX(5px)'
+      })
+      para.addEventListener('mouseleave', function () {
+        this.style.transform = 'translateX(0)'
+      })
+    })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <section className="team-section">
+    <section className="team-section" ref={sectionRef}>
       <div className="inner-wrapper">
         <div className="grid-layout">
           <div className="text-block">

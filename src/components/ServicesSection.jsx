@@ -1,7 +1,9 @@
+import { useEffect, useRef } from 'react'
 import "../css/Home.css"
 
-
 function ServicesSection() {
+  const sectionRef = useRef(null)
+
   const services = [
     {
       icon: '🕌',
@@ -35,8 +37,31 @@ function ServicesSection() {
     }
   ]
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running'
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    const boxes = sectionRef.current?.querySelectorAll('.feature-box')
+    boxes?.forEach((box) => {
+      box.style.animationPlayState = 'paused'
+      observer.observe(box)
+    })
+
+    return () => {
+      boxes?.forEach((box) => observer.unobserve(box))
+    }
+  }, [])
+
   return (
-    <section id="services" className="offerings-section">
+    <section id="services" className="offerings-section" ref={sectionRef}>
       <div className="content-container">
         <h2 className="heading-main">Our Services</h2>
         <p className="subtitle-text">
