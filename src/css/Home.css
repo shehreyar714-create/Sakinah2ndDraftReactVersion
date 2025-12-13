@@ -294,33 +294,24 @@
  /* Responsive: tablet and mobile */
  @media (max-width: 1024px) {
    .navbar {
-     flex-direction: column;
-     align-items: center;
-     background: none;
-     /* border: 4px solid red; */
-   }
-
-   .hamburger {
-     display: block;
-   }
-
-   .nav-links {
-     display: none;
-     flex-direction: column;
+     position: static;
      width: 100%;
-     padding-left: 0;
-   }
-
-   .nav-links.active {
      display: flex;
      flex-direction: column;
-     position: absolute;
-     /* border: 4px solid green; */
-     top: 5rem;
-     z-index: 2;
-     /* background-color: var(--gradient-gold); */
-     background-color: #e6bb51;
+     justify-content: center;
+     align-items: center;
+     width: 100vw;
+     height: 16rem;
    }
+
+
+
+   .nav-links {
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+     padding-left: 0;
+   } 
  }
 
  .nav-links {
@@ -435,7 +426,7 @@
      width: 100%;
      display: flex;
      flex-direction: row;
-     justify-content: space-between;
+     justify-content: center;
    }
 
    .nav-top {
@@ -453,9 +444,11 @@
      height: 12rem;
      top: -2.5rem;
    }
+ 
 
    .nav-links {
      top: -4rem;
+     justify-content: center;
    }
 
    .nav-links li a {
@@ -505,6 +498,9 @@
    .logo img {
      height: 10rem;
      top: -2rem;
+   }
+     .hamburger{
+    display: block;
    }
 
    .nav-links {
@@ -1369,7 +1365,7 @@
  @media (max-width: 767px) {
    .calender-container {
      max-width: 100%;
-     margin: 1rem 1rem 2rem 1rem;
+     margin: 1rem 4rem 1rem 4rem;
    }
 
    .calendar-container {
