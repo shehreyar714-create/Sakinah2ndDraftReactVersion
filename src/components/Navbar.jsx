@@ -29,22 +29,29 @@ function Navbar() {
             {/* <a href="/">Home</a> */}
           </li>
           <li>
-            <a href="/masajidtimings">Masajid Timings</a>
+            <Link to="/masajidtimings">Masajid Timings</Link>
+            {/* <a href="/masajidtimings">Masajid Timings</a> */}
+
           </li>
           <li className="dropdown">
-            <a href="calculations">Calculations</a>
+            <Link to="calculations">Calculations</Link>
+            {/* <a href="calculations">Calculations</a> */}
             <ul className="dropdown-menu">
               <li>
-                <a href="/calculations/zakat">Zakat</a>
+                <Link to="/calculations/zakat">Zakat</Link>
+                {/* <a href="/calculations/zakat">Zakat</a> */}
               </li>
               <li>
-                <a href="/calculations/fitrah">Fitra</a>
+                <Link to="/calculations/fitrah">Fitrah</Link>
+                {/* <a href="/calculations/fitrah">Fitra</a> */}
               </li>
               <li>
-                <a href="/calculations/inheritence">Inheritance</a>
+                <Link to="/calculations/inheritence">Inheritence</Link>
+                {/* <a href="/calculations/inheritence">Inheritance</a> */}
               </li>
               <li>
-                <a href="/calculations/iddat">Iddat</a>
+                <Link to="/calculations/iddat">Iddat</Link>
+                {/* <a href="/calculations/iddat">Iddat</a> */}
               </li>
             </ul>
           </li>
@@ -53,7 +60,8 @@ function Navbar() {
             {/* <a href="/aboutus">About Us</a> */}
           </li>
           <li>
-            <a href="/joinus">Join Us</a>
+            <Link to="/joinus">Join Us</Link>
+            {/* <a href="/joinus">Join Us</a> */}
           </li>
         </ul>
       </nav>
