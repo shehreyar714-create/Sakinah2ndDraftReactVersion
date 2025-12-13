@@ -488,7 +488,7 @@
      width: 100%;
      display: flex;
      flex-direction: row;
-     gap: 18rem;
+     gap: 16rem;
      justify-content: space-between;
    }
 
