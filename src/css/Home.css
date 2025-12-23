@@ -188,6 +188,7 @@
    .landing-content {
      padding: 1.5rem 1rem;
      justify-content: center;
+     position: absolute;
    }
 
    .allah-symbol {
@@ -240,9 +241,11 @@
  }
 
  /* ----------------------------------------------------------------------header-------------------------------------------------------- */
+ /* ==================================================
+   HEADER / NAVBAR - BASE STYLES
+   ================================================== */
 
  .navbar {
-   /* background-color: var(--nav-bg); */
    position: static;
    width: 100%;
    display: flex;
@@ -253,66 +256,20 @@
    height: 16rem;
  }
 
- .logo {
-   font-family: 'Aref Ruqaa', serif;
-   font-weight: 700;
-   overflow: hidden;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   /* background-color: var(--bg-tertiary); Elevated surface */
-   /* box-shadow: var(--shadow-glow-md); Soft gold glow */
-   /* border-radius: 0.5rem; */
-   height: 13rem;
+ .nav-header {
+   position: relative;
  }
 
- .logo img {
+ .nav-header img {
    height: 15rem;
    object-fit: contain;
    position: relative;
    top: -3rem;
  }
 
- /* ---------------------------------------------------All the styling of hamburger is here------------------------------- */
- /* Hide hamburger on desktop */
- /* Default: show nav links on desktop */
- .nav-links {
-   display: flex;
-   gap: 1.5rem;
- }
-
- /* Hide hamburger on desktop */
- .hamburger {
-   display: none;
-   font-size: 2rem;
-   background: none;
-   border: none;
-   cursor: pointer;
-   color: var(--neutral-white);
- }
-
- /* Responsive: tablet and mobile */
- @media (max-width: 1024px) {
-   .navbar {
-     position: static;
-     width: 100%;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     width: 100vw;
-     height: 16rem;
-   }
-
-
-
-   .nav-links {
-     display: flex;
-     flex-direction: row;
-     width: 100%;
-     padding-left: 0;
-   } 
- }
+ /* ==================================================
+   NAVIGATION LINKS - BASE STYLES
+   ================================================== */
 
  .nav-links {
    font-family: 'Cairo', sans-serif;
@@ -320,7 +277,8 @@
    list-style: none;
    position: relative;
    top: -5rem;
-   /* border: 4px solid orange; */
+   display: flex;
+   gap: 1.5rem;
  }
 
  .nav-links li a {
@@ -335,42 +293,37 @@
 
  .nav-links li a:hover {
    color: var(--color-primary-base);
-   /* Gold hover */
- }
-
- /* Active/Current page styling */
- .nav-links li a.active {
-   color: var(--color-primary-base);
-   border-bottom: 3px solid var(--color-primary-base);
-   /* or use background-color for a filled effect */
  }
 
  .nav-links li a:active {
    color: var(--text-secondary);
-   /* Soft gray-beige */
  }
 
- /* Underline effect */
  .nav-links li a.active {
    color: var(--color-primary-base);
+   font-weight: 700;
    border-bottom: 3px solid var(--color-primary-base);
- }
-
- /* OR Background highlight */
- .nav-links li a.active {
-   color: var(--color-primary-base);
    background-color: rgba(var(--color-primary-rgb), 0.1);
    border-radius: 5px;
  }
 
- /* OR Bold with color */
- .nav-links li a.active {
-   color: var(--color-primary-base);
-   font-weight: 700;
+ /* ==================================================
+   HAMBURGER MENU
+   ================================================== */
+
+ .hamburger {
+   display: none;
+   font-size: 2rem;
+   background: none;
+   border: none;
+   cursor: pointer;
+   color: var(--neutral-white);
  }
 
+ /* ==================================================
+   DROPDOWN MENU
+   ================================================== */
 
- /* Dropdown styles */
  .dropdown {
    position: relative;
  }
@@ -384,7 +337,6 @@
    background: var(--dropdown-bg);
    border: 1px solid var(--dropdown-border);
    box-shadow: var(--shadow-glow-sm);
-   /* Subtle gold glow */
    list-style: none;
    padding: 0.5rem 0;
    display: none;
@@ -406,17 +358,16 @@
    background: var(--dropdown-item-hover-bg);
    color: var(--dropdown-item-hover-text);
    box-shadow: var(--shadow-glow-hover-sm);
-   /* Elevated glow on hover */
  }
 
- /* Show dropdown on hover */
  .dropdown:hover .dropdown-menu {
    display: block;
  }
 
- /* ========================================
+ /* ==================================================
    TABLET RESPONSIVE (768px - 1024px)
-   ======================================== */
+   ================================================== */
+
  @media (min-width: 768px) and (max-width: 1024px) {
    .navbar {
      padding: 0 1rem;
@@ -444,10 +395,9 @@
      height: 12rem;
      top: -2.5rem;
    }
- 
 
    .nav-links {
-     top: -4rem;
+     top: -5rem;
      justify-content: center;
    }
 
@@ -466,23 +416,41 @@
    }
  }
 
- /* ========================================
+ /* ==================================================
    MOBILE RESPONSIVE (max-width: 767px)
-   ======================================== */
+   ================================================== */
+
  @media (max-width: 767px) {
    .navbar {
      padding: 1rem 0.5rem;
-     /* background-color: var(--bg-primary); */
      border-bottom: 1px solid var(--border-secondary);
-     height: 6rem;
+     height: 10rem;
+     position: relative;
    }
 
    .nav-header {
      width: 100%;
      display: flex;
-     flex-direction: row;
-     gap: 16rem;
-     justify-content: space-between;
+     flex-direction: row-reverse;
+     justify-content: flex-end;
+     align-items: center;
+     position: fixed;
+     padding: 0 1rem;
+     gap: 5rem;
+     /* border: 4px solid blue; */
+     background-color: black;
+   }
+
+   .nav-header.scrolled {
+     background: #fff;
+   }
+
+   .nav-header img {
+     left: 8rem;
+     height: 10rem;
+     position: static;
+     top: 1rem;
+
    }
 
    .nav-top {
@@ -491,65 +459,96 @@
 
    .logo {
      gap: 0.2rem;
-     align-items: end;
+     align-items: flex-end;
      font-size: 1rem;
    }
 
-   .logo img {
-     height: 10rem;
-     top: -2rem;
-   }
-     .hamburger{
-    display: block;
+   .hamburger {
+     display: block;
+     position: relative;
+     z-index: 10;
    }
 
    .nav-links {
-     top: -3rem;
+     position: absolute;
+     top: 12rem;
+     left: 0;
+     width: 100%;
+     background: var(--bg-primary);
      display: none;
      flex-direction: column;
      gap: 0.5rem;
      align-items: center;
+     padding: 1rem 0;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   }
+
+   .nav-links.active {
+     display: flex;
+     z-index: 2;
+     /* border: 4px solid red; */
+     left: 0;
+     width: 12rem;
+     height: 82vh;
+     position: fixed;
+     top: 160px;
+     border: 0.5px solid white;
+     box-shadow: 0px 0px 14px 0px whitesmoke;
+   }
+
+   .nav-links li {
+     width: 100%;
+     text-align: center;
    }
 
    .nav-links li a {
      font-size: 1.1rem;
-     padding: 0.4rem 0.8rem;
+     padding: 0.6rem 0.8rem;
+     display: block;
+     width: 100%;
    }
 
    .dropdown-menu {
-     width: 10rem;
-     left: 50%;
-     transform: translateX(-50%);
+     position: static;
+     width: 100%;
+     transform: none;
+     box-shadow: none;
+     border: none;
+     background: rgba(var(--color-primary-rgb), 0.05);
    }
 
    .dropdown-menu li a {
      font-size: 0.95rem;
-     padding: 0.4rem 0.8rem;
+     padding: 0.5rem 2rem;
    }
  }
 
- /* Extra small mobile devices */
+ /* ==================================================
+   EXTRA SMALL MOBILE (max-width: 375px)
+   ================================================== */
+
  @media (max-width: 375px) {
-   .logo img {
+   .navbar {
+     height: 10rem;
+   }
+
+   .nav-header img {
      height: 8rem;
      top: -1.5rem;
    }
 
    .nav-links {
-     top: -2.5rem;
+     top: 10rem;
    }
 
    .nav-links li a {
      font-size: 1rem;
-     padding: 0.35rem 0.7rem;
-   }
-
-   .dropdown-menu {
-     width: 9rem;
+     padding: 0.5rem 0.7rem;
    }
 
    .dropdown-menu li a {
      font-size: 0.9rem;
+     padding: 0.45rem 1.5rem;
    }
  }
 

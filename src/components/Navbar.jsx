@@ -12,10 +12,8 @@ function Navbar() {
   return (
     <header>
       <nav className="navbar">
-        <div className="nav-header">
-          <div className="logo">
-            <img src="/images/logo2.png" alt="Logo" />
-          </div>
+        <div className="nav-header"> 
+            <img src="/images/logo2.png" alt="Logo" /> 
 
           <button className="hamburger" onClick={toggleMenu}>
             ☰
