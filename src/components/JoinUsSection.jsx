@@ -1,9 +1,9 @@
 import { useState } from 'react'
-
 import "../css/Home.css"
 
 function JoinUsSection() {
   const [activeTab, setActiveTab] = useState('register')
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,26 +11,92 @@ function JoinUsSection() {
     password: ''
   })
 
+  /* ✅ NEW: holds validation errors */
+  const [errors, setErrors] = useState({})
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
+
+    /* ✅ NEW: remove error as user types */
+    setErrors((prev) => ({
+      ...prev,
+      [e.target.name]: ''
+    }))
+  }
+
+  /* ✅ NEW: email format validation */
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
+  /* ✅ NEW: register form validation */
+  const validateRegister = () => {
+    const newErrors = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Full name is required'
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Invalid email format'
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required'
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Minimum 6 characters required'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  /* ✅ NEW: sign-in validation */
+  const validateSignIn = () => {
+    const newErrors = {}
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Invalid email'
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
   }
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault()
+
+    /* ✅ NEW: stop submit if invalid */
+    if (!validateRegister()) return
+
     console.log('Register:', formData)
   }
 
   const handleSignInSubmit = (e) => {
     e.preventDefault()
+
+    /* ✅ NEW: stop submit if invalid */
+    if (!validateSignIn()) return
+
     console.log('Sign In:', formData)
   }
 
   return (
     <section className="community-section">
       <div className="membership-wrapper">
+
+        {/* ⛔ LEFT PANEL — NOT TOUCHED */}
         <div className="info-panel">
           <h2 className="heading-primary">Join Our Community</h2>
           <p className="description-text">
@@ -47,15 +113,16 @@ function JoinUsSection() {
           </ul>
         </div>
 
+        {/* ✅ RIGHT PANEL ONLY */}
         <div className="forms-panel">
           <div className="tab-navigation">
-            <button 
+            <button
               className={`tab-button ${activeTab === 'register' ? 'selected' : ''}`}
               onClick={() => setActiveTab('register')}
             >
               Sign Up
             </button>
-            <button 
+            <button
               className={`tab-button ${activeTab === 'signin' ? 'selected' : ''}`}
               onClick={() => setActiveTab('signin')}
             >
@@ -63,89 +130,82 @@ function JoinUsSection() {
             </button>
           </div>
 
-          <form 
+          {/* REGISTER FORM */}
+          <form
             className={`registration-form ${activeTab === 'register' ? 'visible' : ''}`}
             onSubmit={handleRegisterSubmit}
           >
             <div className="input-wrapper">
-              <label htmlFor="user-fullname" className="field-label">Full Name</label>
-              <input 
-                type="text" 
-                id="user-fullname" 
-                name="name" 
-                className="text-input" 
+              <label className="field-label">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                className="text-input"
                 value={formData.name}
                 onChange={handleInputChange}
-                required 
               />
+              {errors.name && <span className="error-text">{errors.name}</span>}
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="user-email" className="field-label">Email Address</label>
-              <input 
-                type="email" 
-                id="user-email" 
-                name="email" 
+              <label className="field-label">Email Address</label>
+              <input
+                type="email"
+                name="email"
                 className="text-input"
                 value={formData.email}
                 onChange={handleInputChange}
-                required 
               />
+              {errors.email && <span className="error-text">{errors.email}</span>}
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="user-org" className="field-label">Community/Organization (optional)</label>
-              <input 
-                type="text" 
-                id="user-org" 
-                name="company" 
-                className="text-input"
-                value={formData.company}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="user-pass" className="field-label">Password</label>
-              <input 
-                type="password" 
-                id="user-pass" 
-                name="password" 
+              <label className="field-label">Password</label>
+              <input
+                type="password"
+                name="password"
                 className="text-input"
                 value={formData.password}
                 onChange={handleInputChange}
-                required 
               />
+              {errors.password && <span className="error-text">{errors.password}</span>}
             </div>
+
             <button type="submit" className="action-button">
               Create Account
             </button>
           </form>
 
-          <form 
+          {/* SIGN IN FORM */}
+          <form
             className={`registration-form ${activeTab === 'signin' ? 'visible' : ''}`}
             onSubmit={handleSignInSubmit}
           >
             <div className="input-wrapper">
-              <label htmlFor="member-email" className="field-label">Email Address</label>
-              <input 
-                type="email" 
-                id="member-email" 
-                name="email" 
+              <label className="field-label">Email Address</label>
+              <input
+                type="email"
+                name="email"
                 className="text-input"
                 onChange={handleInputChange}
-                required 
               />
+              {errors.email && <span className="error-text">{errors.email}</span>}
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="member-pass" className="field-label">Password</label>
-              <input 
-                type="password" 
-                id="member-pass" 
-                name="password" 
+              <label className="field-label">Password</label>
+              <input
+                type="password"
+                name="password"
                 className="text-input"
                 onChange={handleInputChange}
-                required 
               />
+              {errors.password && <span className="error-text">{errors.password}</span>}
             </div>
-            <button type="submit" className="action-button">Sign In</button>
+
+            <button type="submit" className="action-button">
+              Sign In
+            </button>
           </form>
         </div>
       </div>

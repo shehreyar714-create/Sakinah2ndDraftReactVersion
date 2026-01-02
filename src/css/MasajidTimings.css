@@ -1,0 +1,201 @@
+/* =====================================================
+   MASJID TIMING PAGE – SAKINAH DARK GOLD THEME
+   ===================================================== */
+
+.masajid-page {
+  background: var(--gradient-primary);
+  min-height: 100vh;
+  padding: 6rem 1.5rem;
+  color: var(--text-primary);
+  font-family: var(--font-kufam);
+}
+
+/* Page Heading */
+.page-title {
+  font-family: var(--font-aref);
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-gold);
+  letter-spacing: 0.03em;
+  text-shadow: var(--glow-gold-subtle);
+}
+
+/* Grid Layout */
+.masajid-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+}
+
+/* Masjid Card */
+.masjid-card {
+  background: var(--card-bg);
+  border-radius: 22px;
+  padding: 2.5rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-glow-sm);
+  position: relative;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+/* Decorative overlay */
+.masjid-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--card-before-bg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.masjid-card:hover::before {
+  opacity: 1;
+}
+
+.masjid-card:hover {
+  /* transform: translateY(-8px); */
+  border-color: var(--card-hover-border);
+  /* box-shadow: var(--shadow-glow-hover-md); */
+  /* background: var(--card-hover-bg); */
+}
+
+/* Header */
+.masjid-header h2 {
+  font-family: var(--font-el-messiri);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--primary-700);
+}
+
+/* Address */
+
+.address-container {
+  display: flex;       /* align text and icon horizontally */
+  align-items: center; /* vertically center icon */
+  gap: 8px;            /* spacing between text and icon */
+}
+
+.address-container a {
+  display: inline-flex; /* make the link clickable */
+}
+.address {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.address svg {
+  color: var(--text-gold);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.map-icon {
+  cursor: pointer;
+  margin-left: 8px; /* or whatever spacing looks good */ 
+  transition: transform 0.2s;
+  color: #e63946;
+}
+
+.map-icon:hover {
+  transform: scale(1.1);
+}
+
+
+/* Timings Section */
+.timings {
+  margin-top: 2rem;
+}
+
+.timings h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-accent);
+  font-family: var(--font-el-messiri);
+}
+
+.timings h3 svg {
+  color: var(--accent-green-500);
+}
+
+/* Timings List */
+.timings ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timings li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed var(--border-subtle);
+  font-size: 0.95rem;
+}
+
+.timings li:last-child {
+  border-bottom: none;
+}
+
+/* Salah Name */
+.salah-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Salah Time */
+.salah-time {
+  font-family: var(--font-el-messiri);
+  color: var(--accent-green-600);
+  letter-spacing: 0.03em;
+}
+
+/* Highlight Jumu'ah */
+.timings li:has(.salah-name:contains("Juma")) {
+  color: var(--text-gold);
+}
+
+
+
+/* ===============================
+   RESPONSIVE ADJUSTMENTS
+   =============================== */
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.2rem;
+  }
+
+  .masjid-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .masajid-page {
+    padding: 4rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.9rem;
+  }
+
+  .masjid-card {
+    padding: 1.75rem;
+    border-radius: 18px;
+  }
+
+  .timings li {
+    font-size: 0.9rem;
+  }
+}

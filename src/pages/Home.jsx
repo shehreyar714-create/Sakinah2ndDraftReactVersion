@@ -4,7 +4,7 @@ import PrayerCard from "../components/PrayerCard";
 import Calendar from "../components/Calendar";
 import QuranSection from "../components/QuranSection";
 import HeroSection from "../components/HeroSection";
-import ServicesSection from "../components/ServicesSection";
+// import ServicesSection from "../components/ServicesSection";
 import AboutSection from "../components/AboutSection";
 import JoinUsSection from "../components/JoinUsSection";
 import Footer from "../components/Footer";
@@ -36,7 +36,7 @@ function Home() {
 
       <QuranSection />
       <HeroSection />
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       <AboutSection />
       <JoinUsSection />
 

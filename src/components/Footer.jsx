@@ -1,22 +1,39 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import "../css/Home.css"
 
 function Footer() {
+  const [emailError, setEmailError] = useState('')
+
+  const validateEmail = (email) => {
+    // Basic but reliable email regex
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailPattern.test(email)
+  }
+
   const handleSubscribe = (e) => {
     e.preventDefault()
-    const email = e.target.email.value
+    const email = e.target.email.value.trim()
+
+    // Email validation check
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address')
+      return
+    }
+
+    // If valid
+    setEmailError('')
     alert(`Thank you for subscribing with: ${email}`)
     e.target.reset()
   }
 
   useEffect(() => {
     const contactItems = document.querySelectorAll('.contact-item')
-    
+
     contactItems.forEach(item => {
-      item.addEventListener('mouseenter', function() {
+      item.addEventListener('mouseenter', function () {
         this.style.paddingLeft = '10px'
       })
-      item.addEventListener('mouseleave', function() {
+      item.addEventListener('mouseleave', function () {
         this.style.paddingLeft = '0'
       })
     })
@@ -37,14 +54,17 @@ function Footer() {
             </div>
             <div className="mission-box">
               <h4>Our Mission</h4>
-              <p>Cultivating peace and knowledge through quality Islamic education and community outreach, striving for spiritual excellence.</p>
+              <p>
+                Cultivating peace and knowledge through quality Islamic education
+                and community outreach, striving for spiritual excellence.
+              </p>
             </div>
           </div>
 
           <div className="footer-section">
             <h3>Contact Info</h3>
             <div className="contact-item">
-              <i className="fas fa-phone-alt"></i>
+              <i className="fas fa-phone"></i>
               <span>+000 123 456 789 213</span>
             </div>
             <div className="contact-item">
@@ -72,29 +92,44 @@ function Footer() {
 
           <div className="footer-section">
             <h3>Subscribe for Updates</h3>
-            <p>Stay connected with our latest news, courses, and Islamic content.</p>
+            <p>
+              Stay connected with our latest news, courses, and Islamic content.
+            </p>
+
             <form className="subscribe-form" onSubmit={handleSubscribe}>
-              <input type="email" name="email" placeholder="Enter your email" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                onChange={() => setEmailError('')}
+                required
+              />
+
+              {emailError && (
+                <span className="error-text">{emailError}</span>
+              )}
+
               <button type="submit">Subscribe</button>
             </form>
+
             <h3>Follow Us</h3>
             <div className="social-media">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-icon" title="Facebook">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-icon" title="Twitter">
+              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon" title="Instagram">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-icon" title="YouTube">
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="fab fa-youtube"></i>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a href="https://telegram.org" target="_blank" rel="noreferrer" className="social-icon" title="Telegram">
+              <a href="https://telegram.org" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="fab fa-telegram-plane"></i>
               </a>
             </div>
