@@ -9,12 +9,20 @@ import AboutSection from "../components/AboutSection";
 import JoinUsSection from "../components/JoinUsSection";
 import Footer from "../components/Footer";
 import "../css/Home.css";
+import { useState } from "react";
+import { useLocation } from "../hooks/useLocation"; 
+import { usePrayerTimes } from "../hooks/uesPrayerTimes";
 
 function Home() {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const { coords } = useLocation();
+  const { data, loading } = usePrayerTimes(selectedDate, coords);
   return (
     <div>
+      <Navbar />
       <div className="landingpage">
-        <Navbar />
+        
 
         <div className="landing-content">
           <div className="allah-symbol">ﷲ</div>
@@ -30,8 +38,12 @@ function Home() {
       </div>
 
       <section className="combined-section">
-        <PrayerCard />
-        <Calendar />
+        <PrayerCard selectedDate={selectedDate} />
+
+        <Calendar
+          selectedDate={selectedDate}
+          onDateChange={setSelectedDate}
+        />
       </section>
 
       <QuranSection />

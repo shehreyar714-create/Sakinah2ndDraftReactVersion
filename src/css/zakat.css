@@ -1,0 +1,173 @@
+.container {
+  width: 90%;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+/* HERO */
+
+.zakat-hero {
+  padding: 6rem 0;
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-primary),
+    var(--bg-secondary)
+  );
+}
+
+.zakat-hero h1 {
+  font-size: 3rem;
+  color: var(--text-gold);
+  margin-bottom: 1rem;
+}
+
+.zakat-hero p {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* INFO */
+
+.zakat-info-section {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.zakat-info-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.zakat-info-section p {
+  max-width: 45rem;
+  margin: 0 auto;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+}
+
+/* WEALTH GRID */
+
+.wealth-grid {
+  padding: 3rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
+}
+
+.wealth-card {
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: 0.3s ease;
+}
+
+.wealth-card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: var(--shadow-glow-md);
+}
+
+/* CALCULATOR */
+
+.calculator-section {
+  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.calculator-card {
+  width: 100%;
+  max-width: 30rem;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-glow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calculator-card h3 {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.input-group input {
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+button {
+  padding: 0.9rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  transition: 0.3s ease;
+}
+
+button:hover {
+  box-shadow: var(--glow-gold);
+}
+
+/* RESULT */
+
+.result-card {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-accent);
+}
+
+.result-card p {
+  font-size: 1.6rem;
+  color: var(--text-gold);
+  font-weight: bold;
+}
+
+/* REMINDER */
+
+.zakat-reminder {
+  padding: 4rem 0;
+  text-align: center;
+  background: var(--bg-secondary);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 48rem) {
+  .zakat-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .calculator-card {
+    padding: 2rem;
+  }
+}

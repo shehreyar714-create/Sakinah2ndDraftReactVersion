@@ -1,19 +1,25 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "../css/Home.css";
-import {Link} from "react-router-dom"
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
   };
 
   return (
     <header>
       <nav className="navbar">
-        <div className="nav-header"> 
-            <img src="/images/logo2.png" alt="Logo" /> 
+        <div className="nav-header">
+          <Link to="/" onClick={closeMenu}>
+            <img src="/images/logo2.png" alt="Sakinah Logo" />
+          </Link>
 
           <button className="hamburger" onClick={toggleMenu}>
             ☰
@@ -21,46 +27,70 @@ function Navbar() {
         </div>
 
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <li>
 
-            <Link to="/" >Home</Link>
-            {/* <a href="/">Home</a> */}
-          </li>
           <li>
-            <Link to="/masajidtimings">Masajid Timings</Link>
-            {/* <a href="/masajidtimings">Masajid Timings</a> */}
-
+            <NavLink to="/" onClick={closeMenu}>
+              Home
+            </NavLink>
           </li>
+
+          <li>
+            <NavLink to="/masajidtimings" onClick={closeMenu}>
+              Masajid Timings
+            </NavLink>
+          </li>
+
           <li className="dropdown">
-            <Link to="calculations">Calculations</Link>
-            {/* <a href="calculations">Calculations</a> */}
+            {/* 🔥 FIXED — absolute route */}
+            <NavLink to="/calculations" onClick={closeMenu}>
+              Calculations
+            </NavLink>
+
             <ul className="dropdown-menu">
               <li>
-                <Link to="/calculations/zakat">Zakat</Link>
-                {/* <a href="/calculations/zakat">Zakat</a> */}
+                <NavLink to="/calculations/zakat" onClick={closeMenu}>
+                  Zakat
+                </NavLink>
               </li>
+
               <li>
-                <Link to="/calculations/fitrah">Fitrah</Link>
-                {/* <a href="/calculations/fitrah">Fitra</a> */}
+                <NavLink to="/calculations/fitrah" onClick={closeMenu}>
+                  Fitrah
+                </NavLink>
               </li>
+
               <li>
-                <Link to="/calculations/inheritence">Inheritence</Link>
-                {/* <a href="/calculations/inheritence">Inheritance</a> */}
+                <NavLink to="/calculations/inheritence" onClick={closeMenu}>
+                  Inheritence
+                </NavLink>
               </li>
+
               <li>
-                <Link to="/calculations/iddat">Iddat</Link>
-                {/* <a href="/calculations/iddat">Iddat</a> */}
+                <NavLink to="/calculations/iddat" onClick={closeMenu}>
+                  Iddat
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/calculations/aqiqah" onClick={closeMenu}>
+                  Aqiqah
+                </NavLink>
               </li>
             </ul>
           </li>
+
           <li>
-            <Link to="/aboutus">About Us</Link>
-            {/* <a href="/aboutus">About Us</a> */}
+            <NavLink to="/aboutus" onClick={closeMenu}>
+              About Us
+            </NavLink>
           </li>
+
           <li>
-            <Link to="/joinus">Join Us</Link>
-            {/* <a href="/joinus">Join Us</a> */}
+            <NavLink to="/joinus" onClick={closeMenu}>
+              Join Us
+            </NavLink>
           </li>
+
         </ul>
       </nav>
     </header>
