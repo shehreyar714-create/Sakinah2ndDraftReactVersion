@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../css/Zakat.css";
+import "../css/zakat.css";
 
 function Zakat() {
   const [assets, setAssets] = useState("");

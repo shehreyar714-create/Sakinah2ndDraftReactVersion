@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
-import "../css/Iddat.css";
+import "../css/iddat.css";
 
 /* ---------------- IDDAH CALCULATIONS ---------------- */
 
