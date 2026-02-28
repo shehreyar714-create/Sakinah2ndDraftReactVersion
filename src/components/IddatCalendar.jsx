@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/iddat.css";
+import "../css/Iddat.css";
 
 const DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
