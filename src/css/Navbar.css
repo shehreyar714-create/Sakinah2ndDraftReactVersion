@@ -1,7 +1,6 @@
 /* ==================================================
    NAVBAR BASE
 ================================================== */
-
 .navbar {
   width: 100%;
   background: var(--bg-primary);
@@ -14,7 +13,6 @@
 /* ==================================================
    HEADER (LOGO + HAMBURGER)
 ================================================== */
-
 .nav-header {
   width: 100%;
   max-width: 75rem;
@@ -33,14 +31,16 @@
 /* ==================================================
    NAV LINKS - DESKTOP
 ================================================== */
-
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
   padding: 1rem 0 1.5rem;
   font-family: 'Cairo', sans-serif;
   font-weight: 600;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-links li {
@@ -50,9 +50,9 @@
 .nav-links li a,
 .dropdown-toggle {
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-primary);
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 0.5rem;
   transition: all 0.3s ease;
   background: none;
   border: none;
@@ -70,9 +70,79 @@
 }
 
 /* ==================================================
+   AUTH BUTTONS
+================================================== */
+.nav-login-btn {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 700 !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-gold) !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-login-btn:hover {
+  background: rgba(230, 187, 81, 0.1) !important;
+  border-bottom: none !important;
+}
+
+.nav-signup-btn {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 700 !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 0.5rem !important;
+  background: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-text) !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-signup-btn:hover {
+  background: var(--btn-primary-hover) !important;
+  transform: translateY(-1px);
+  border-bottom: none !important;
+}
+
+.nav-signup-btn.active,
+.nav-login-btn.active {
+  border-bottom: none !important;
+}
+
+/* ==================================================
+   USER NAME + SIGN OUT
+================================================== */
+.nav-user-name {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-gold);
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+  display: block;
+}
+
+.nav-signout-btn {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--error-500);
+  padding: 0.6rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.nav-signout-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+/* ==================================================
    DROPDOWN
 ================================================== */
-
 .dropdown {
   position: relative;
 }
@@ -89,7 +159,7 @@
   padding: 0.5rem 0;
   border-radius: 0.5rem;
   display: none;
-  z-index: 2;
+  z-index: 100;
 }
 
 .dropdown-menu li a {
@@ -119,7 +189,6 @@
 /* ==================================================
    HAMBURGER
 ================================================== */
-
 .hamburger {
   display: none;
   position: absolute;
@@ -134,23 +203,20 @@
 /* ==================================================
    TABLET
 ================================================== */
-
 @media (max-width: 64em) {
   .nav-header img {
     height: 5rem;
   }
 
   .nav-links {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 }
 
 /* ==================================================
    MOBILE
 ================================================== */
-
 @media (max-width: 48em) {
-
   .hamburger {
     display: block;
   }
@@ -163,11 +229,14 @@
     width: 16rem;
     background: var(--bg-primary);
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1rem;
     padding: 6rem 1.5rem 2rem;
     transition: left 0.3s ease;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
     align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+    z-index: 999;
   }
 
   .nav-links.active {
@@ -186,13 +255,19 @@
     text-align: left;
   }
 
-  /* Dropdown inside mobile */
+  .nav-login-btn,
+  .nav-signup-btn {
+    display: block;
+    width: 100%;
+    text-align: center !important;
+  }
+
   .dropdown-menu {
     position: static;
     width: 100%;
     border: none;
     box-shadow: none;
-    background: rgba(var(--color-primary-rgb), 0.05);
+    background: rgba(230, 187, 81, 0.05);
     margin-top: 0.5rem;
     border-radius: 0.5rem;
   }
@@ -205,9 +280,7 @@
 /* ==================================================
    EXTRA SMALL DEVICES
 ================================================== */
-
 @media (max-width: 23.4375em) {
-
   .nav-header img {
     height: 4rem;
   }
