@@ -13,15 +13,21 @@ import Inheritence from './pages/Inheritence'
 import Iddat from './pages/Iddat'
 import Aqiqah from './pages/Aqiqah'
 
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import ProtectedRoute from './components/ProtectedRoute'
+import PersonalCalendar from './pages/PersonalCalendar'
+import HijriCalendarPage from './pages/HijriCalendarPage'
+
 function App() {
   return (
     <main className="main-content">
       <Routes>
 
+        {/* Public routes */}
         <Route path='/' element={<Home />} />
         <Route path='/masajidtimings' element={<MasajidTimings />} />
         <Route path='/calculations' element={<Calculations />} />
-
         <Route path='/aboutus' element={<AboutUs />} />
         <Route path='/joinus' element={<JoinUs />} />
 
@@ -31,6 +37,15 @@ function App() {
         <Route path='/calculations/iddat' element={<Iddat />} />
         <Route path='/calculations/aqiqah' element={<Aqiqah />} />
 
+        {/* Auth routes */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+
+
+        <Route path='/calendar' element={
+          <ProtectedRoute><PersonalCalendar /></ProtectedRoute>
+        } />
+        <Route path='/hijri-calendar' element={<HijriCalendarPage />} />
       </Routes>
     </main>
   )
